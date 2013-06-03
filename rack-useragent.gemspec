@@ -41,13 +41,13 @@ Gem::Specification.new do |s|
 
     if Gem::Version.new(Gem::RubyGemsVersion) >= Gem::Version.new('1.2.0') then
       s.add_runtime_dependency(%q<rack>, [">= 0.9.1"])
-      s.add_runtime_dependency(%q<josh-useragent>, ["= 0.0.2"])
+      s.add_runtime_dependency(%q<useragent>, [">= 0.1.4"])
     else
       s.add_dependency(%q<rack>, [">= 0.9.1"])
-      s.add_dependency(%q<josh-useragent>, ["= 0.0.2"])
+      s.add_dependency(%q<useragent>, [">= 0.1.4"])
     end
   else
     s.add_dependency(%q<rack>, [">= 0.9.1"])
-    s.add_dependency(%q<josh-useragent>, ["= 0.0.2"])
+    s.add_dependency(%q<useragent>, [">= 0.1.4"])
   end
 end
