@@ -14,7 +14,7 @@ module Rack::UserAgent
     def call(env)
       browser = UserAgent.parse(env["HTTP_USER_AGENT"]) if env["HTTP_USER_AGENT"]
       if unsupported?(browser)
-        [400, {"Content-Type" => "text/html"}, page(env['rack.locale'], browser)]
+        [400, {"Content-Type" => "text/html"}, [page(env['rack.locale'], browser)]]
       else
         @app.call(env)
       end
