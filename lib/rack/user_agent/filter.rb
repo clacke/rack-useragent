@@ -23,7 +23,13 @@ module Rack::UserAgent
     private
 
     def unsupported?(browser)
-       browser && @browsers.any? { |hash| browser < OpenStruct.new(hash) }
+      browser && @browsers.any? do |hash_or_proc|
+        if hash_or_proc.respond_to? :call
+          hash_or_proc.call(browser)
+        else
+          browser < OpenStruct.new(hash_or_proc)
+        end
+      end
     end
 
     def page(locale, browser)

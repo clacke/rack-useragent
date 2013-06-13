@@ -50,9 +50,11 @@ Enjoy it!
 
 * Sergio Gil <sgilperez@gmail.com>
 * Luismi Cavallé <luismi@lmcavalle.com>
+* Claes Wallin (韋嘉誠) <claes.wallin@greatsinodevelopment.com>
 
 == Contributors
 
 We're looking forward for your patches. Fork us!
 
 Copyright (c) 2008 BeBanjo, released under the MIT license
+Copyright (c) 2013 Trader Analytics Corp. (Hong Kong) Limited

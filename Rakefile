@@ -1,6 +1,6 @@
 require 'rake'
 require 'rake/testtask'
-require 'rake/rdoctask'
+require 'rdoc/task'
 
 desc 'Default: run unit tests.'
 task :default => :test
@@ -16,9 +16,9 @@ begin
   require 'jeweler'
   Jeweler::Tasks.new do |gemspec|
     gemspec.name = "rack-useragent"
-    gemspec.authors = ["Sergio Gil", "Luismi Cavallé"]
-    gemspec.email = "ballsbreaking@bebanjo.com"
-    gemspec.homepage = "http://github.com/bebanjo/rack-useragent"
+    gemspec.authors = ["Sergio Gil", "Luismi Cavallé", "Claes Wallin (韋嘉誠)"]
+    gemspec.email = "claes.wallin@greatsinodevelopment.com"
+    gemspec.homepage = "http://github.com/clacke/rack-useragent"
     gemspec.summary = "Rack Middleware for filtering by user agent"
     gemspec.add_dependency('rack', '>= 0.9.1')
     gemspec.add_dependency('useragent', '>=0.0.2')
