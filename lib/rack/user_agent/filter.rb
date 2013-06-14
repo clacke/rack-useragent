@@ -1,4 +1,3 @@
-require 'rubygems'
 require 'user_agent'
 require 'ostruct'
 
