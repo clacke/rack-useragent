@@ -1,6 +1,5 @@
 require 'rubygems'
 require 'user_agent'
-require 'erb'
 require 'ostruct'
 
 module Rack::UserAgent
@@ -8,13 +7,13 @@ module Rack::UserAgent
     def initialize(app, config = [], options = {})
       @app = app
       @browsers = config
-      @template = options[:template]
+      @path = options[:path]
     end
 
     def call(env)
       browser = UserAgent.parse(env["HTTP_USER_AGENT"]) if env["HTTP_USER_AGENT"]
       if unsupported?(browser)
-        [400, {"Content-Type" => "text/html"}, [page(env['rack.locale'], browser)]]
+        @app.call(fallback_env(env))
       else
         @app.call(env)
       end
@@ -32,21 +31,14 @@ module Rack::UserAgent
       end
     end
 
-    def page(locale, browser)
-      return "Sorry, your browser is not supported. Please upgrade" unless template = template_file(locale)
-      @browser = browser # for the template
-      ERB.new(File.read(template)).result(binding)
-    end
-
-    def template_file(locale)
-      candidates = [ @template ]
-      
-      if defined?(RAILS_ROOT)
-        candidates += [ File.join(RAILS_ROOT, "public", "upgrade.#{locale}.html"),
-                        File.join(RAILS_ROOT, "public", "upgrade.html") ] 
-      end
-               
-      candidates.compact.detect{ |template| File.exists?(template) }
+    def fallback_env env
+      env.merge(
+        "rack-useragent.fallback" => true,
+        "REQUEST_METHOD" => "GET",
+        "SCRIPT_NAME" => "",
+        "PATH_INFO" => @path,
+        "QUERY_STRING" => ""        
+      )
     end
   end
 end
