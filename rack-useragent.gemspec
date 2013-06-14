@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = "rack-useragent"
-  s.version = "0.1.0"
+  s.version = "0.2.0"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Sergio Gil", "Luismi Cavall\u{e9}", "Claes Wallin (\u{97cb}\u{5609}\u{8aa0})"]
-  s.date = "2013-06-13"
+  s.date = "2013-06-14"
   s.email = "claes.wallin@greatsinodevelopment.com"
   s.extra_rdoc_files = [
     "README.rdoc"

@@ -7,6 +7,8 @@ module Rack::UserAgent
       @app = app
       @browsers = config
       @path = options[:path]
+
+      raise "as of v0.2.0 you need to provide :path to Rack::UserAgent" unless @path
     end
 
     def call(env)
